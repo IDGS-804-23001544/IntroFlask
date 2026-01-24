@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% import "_macros.html" as macros %}
+
+<div class="container mt-4">
+
+    <form method="post" class="border p-4 rounded shadow-sm">
+
+        <div class="mb-3">
+            {{ macros.datos('x1','Valor de X1','number') }}
+        </div>
+
+        <div class="mb-3">
+            {{ macros.datos('y1','Valor de Y1','number') }}
+        </div>
+
+        <div class="mb-3">
+            {{ macros.datos('x2','Valor de X2','number') }}
+        </div>
+
+        <div class="mb-3">
+            {{ macros.datos('y2','Valor de Y2','number') }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Calcular distancia
+        </button>
+    </form>
+
+    {% if distancia is not none %}
+        <div class="alert alert-success mt-3">
+            <strong>La distancia es:</strong> {{ distancia }}
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

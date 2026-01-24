@@ -1,1 +1,4 @@
 .env
+forms.py
+templates/alumnos.html
+__pycache__/

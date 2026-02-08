@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% import "_macros.html" as macros %}
+
+{% block content %}
+<div class="winform">
+
+    <div class="win-title">Cinépolis</div>
+
+    <div class="win-body">
+
+        <div class="group entradas">
+            <span class="group-title">Entradas</span>
+
+            <form method="post" id="cinepolisForm" novalidate>
+                {{ form.hidden_tag() }}
+
+                {{ macros.campoCinepolis(form.nombre) }}
+                {{ macros.campoCinepolis(form.compradores) }}
+                {{ macros.campoCinepolis(form.boletos) }}
+
+                <div class="field">
+                    <label>Tarjeta Cineco</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="cineco" value="si"
+                                   {% if form.cineco.data == "si" %}checked{% endif %}> Sí
+                        </label>
+                        <label>
+                            <input type="radio" name="cineco" value="no"
+                                   {% if form.cineco.data == "no" or not form.cineco.data %}checked{% endif %}> No
+                        </label>
+                    </div>
+                    {% for error in form.cineco.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+            </form>
+        </div>
+
+        <div class="group salidas">
+            <span class="group-title">Salidas</span>
+
+            <div class="field">
+                <label>Valor a Pagar</label>
+                <input class="input" readonly
+                       value="{% if resultado %}${{ '%.2f'|format(resultado.total) }}{% endif %}">
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='bootstrap/img/cinepolis.png') }}">
+            <div class="slogan">LA CAPITAL DEL CINE</div>
+        </div>
+
+        <div class="group acciones">
+            <span class="group-title">Acciones</span>
+
+            <div class="buttons">
+                <button type="submit" form="cinepolisForm" class="btn-win">
+                    Procesar
+                </button>
+                <a href="{{ url_for('index') }}" class="btn-win">Salir</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

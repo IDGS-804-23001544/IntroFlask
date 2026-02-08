@@ -1,0 +1,179 @@
+/* ====== FONDO GENERAL ====== */
+body {
+    background-color: #0C589C;
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+}
+
+/* ====== VENTANA TIPO WINFORMS ====== */
+.winform {
+    width: 920px;
+    margin: 25px auto;
+    border: 2px solid white;
+    background-color: #0C589C;
+}
+
+/* Barra superior */
+.win-title {
+    background-color: #dcdcdc;
+    color: black;
+    font-weight: bold;
+    padding: 4px 8px;
+    width: fit-content;
+    margin: 8px;
+}
+
+/* Área principal */
+.win-body {
+    position: relative;
+    height: 520px;
+}
+
+/* ====== GRUPOS (Entradas / Salidas) ====== */
+.group {
+    position: absolute;
+    border: 2px solid white;
+    padding: 15px;
+    background-color: #0C589C;
+}
+
+.group-title {
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background-color: #0C589C;
+    padding: 0 6px;
+    font-weight: bold;
+}
+
+/* Posiciones EXACTAS */
+.entradas {
+    width: 330px;
+    top: 30px;
+    left: 30px;
+}
+
+.salidas {
+    width: 260px;
+    top: 30px;
+    right: 30px;
+}
+
+/* ====== CAMPOS ====== */
+.field {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.input {
+    width: 100%;
+    height: 24px;
+    background-color: #e6e6e6;
+    border: 1px solid #333;
+    padding: 2px 5px;
+    font-size: 13px;
+}
+
+/* ====== BOTONES ====== */
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-win {
+    background-color: #dcdcdc;
+    color: black;
+    border: 1px solid #555;
+    padding: 4px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-win:hover {
+    background-color: #c0c0c0;
+}
+
+/* ====== LOGO CENTRAL ====== */
+.logo {
+    position: absolute;
+    top: 300px;   /* 👈 justo entre Entradas y Acciones */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+.logo img {
+    width: 330px;
+}
+
+.slogan {
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+/* ====== ELIMINAR BOOTSTRAP VISUAL ====== */
+input, select, button {
+    border-radius: 0 !important;
+}
+
+/* ====== RADIO BUTTONS ====== */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+}
+
+/* ====== ACCIONES ====== */
+.acciones {
+    width: 220px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.acciones .buttons {
+    justify-content: center;
+}
+.field-wrapper {
+    position: relative;
+}
+
+.error-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ff4d4d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* Estilo general para los mensajes de validación */
+.validation-message {
+    color: #d93025;        /* rojo oscuro */
+    background-color: #fdecea; /* fondo rojo claro */
+    border-left: 4px solid #d93025;
+    padding: 5px 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Opcional: input con error */
+.field input.input:invalid {
+    border-color: #d93025;
+    background-color: #fff0f0;
+}
+

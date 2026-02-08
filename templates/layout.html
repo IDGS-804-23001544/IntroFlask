@@ -1,55 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    
-    <title>Document</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/styles.css') }}">
+
+
+    <title>{% block title %}Flask App{% endblock %}</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="">IDGS-804</a>
- 
+    <a class="navbar-brand" href="{{ url_for('index') }}">IDGS-804</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
- 
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
- 
+
         <li class="nav-item">
           <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}"
-             href="">Inicio</a>
+             href="{{ url_for('index') }}">Inicio</a>
         </li>
- 
+
         <li class="nav-item">
-          <a class="nav-link {% if request.endpoint == 'usuarios' %}active{% endif %}"
-             href="">Usuarios</a>
+          <a class="nav-link {% if request.endpoint == 'cinepolis' %}active{% endif %}"
+             href="{{ url_for('cinepolis') }}">Cinépolis</a>
         </li>
- 
+
         <li class="nav-item">
-          <a class="nav-link {% if request.endpoint == 'alumnos' %}active{% endif %}"
-             href="">Alumnos</a>
+          <a class="nav-link {% if request.endpoint == 'alumno' %}active{% endif %}"
+             href="{{ url_for('alumno') }}">Alumnos</a>
         </li>
- 
+
       </ul>
     </div>
   </div>
 </nav>
 
 <div class="container mt-5 pt-5">
-
-{% block content %}
-
-{% endblock %}
-
+    {% block content %}{% endblock %}
 </div>
 
-
-<script scr="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

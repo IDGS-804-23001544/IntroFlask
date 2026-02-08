@@ -1,22 +1,54 @@
 from flask import Flask, render_template, request
 import math
-from forms import UserForm
+from forms import UserForm, CinepolisForm
 from flask_wtf.csrf import CSRFProtect
+
+from flask import render_template, request
+from forms import CinepolisForm
 
 app = Flask(__name__)
 app.secret_key = 'clave_secreta'
 
 csrf = CSRFProtect(app)
 
-
-
-
-
 @app.route('/')
 def index():
     title = "IDGS804 - Intro Flask"
     listado = ['Juan', 'Ana', 'Pedro', 'Tadeo']
     return render_template('index.html')
+
+# ---------------- Cinepolis ----------------
+@app.route("/cinepolis", methods=["GET", "POST"])
+def cinepolis():
+    form = CinepolisForm()
+    resultado = None
+
+    PRECIO_BOLETO = 12.00
+
+    if form.validate_on_submit():
+        boletos = form.boletos.data
+        subtotal = boletos * PRECIO_BOLETO
+
+        descuento = 0
+        if boletos >= 6:
+            descuento = 0.15
+        elif boletos >= 3:
+            descuento = 0.10
+
+        total = subtotal - (subtotal * descuento)
+
+        if form.cineco.data == "si":
+            total -= total * 0.10
+
+        resultado = {
+            "total": total
+        }
+
+    return render_template(
+        "cinepolis.html",
+        form=form,
+        resultado=resultado
+    )
 
 
 # ---------------- OPERACIONES BÁSICAS ----------------
@@ -115,7 +147,8 @@ def operas():
 @app.route("/alumnos", methods=["GET", "POST"])
 def alumno():
     mat = nom = ape = email = ""
-    alumno_class = forms.UserForm()
+    alumno_class = UserForm()
+
 
     if alumno_class.validate_on_submit():
         mat = alumno_class.matricula.data
